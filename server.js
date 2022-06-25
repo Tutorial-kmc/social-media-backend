@@ -1,12 +1,18 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import mongoConnect from "./config/dbConnection.js";
+import routers from "./routes/index.js";
 
 dotenv.config();
 const app = express();
 console.log("env =>", process.env.PORT);
+mongoConnect();
 app.use(cors());
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+routers(app);
 
 app.get("/", (req, res) => {
   res.send("<h1>Social Media Server is Up</h1>");
