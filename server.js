@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 routers(app);
 
+
 app.get("/", (req, res) => {
   res.send("<h1>Social Media Server is Up</h1>");
 });
